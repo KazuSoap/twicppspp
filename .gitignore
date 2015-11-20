@@ -1,0 +1,10 @@
+/*/
+!include/
+!src/
+!*.c*
+!*.h*
+include/KazuSoap_key.h
+.clang_complete
+GPATH
+GRTAGS
+GTAGS
