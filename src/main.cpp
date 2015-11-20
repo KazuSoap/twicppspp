@@ -4,7 +4,8 @@
 
 #include "tweet.h"
 #include "webclient.h"
-#include "mykey.h"
+// #include "mykey.h"
+#include "KazuSoap_key.h"
 
 static void str_append(std::string *to, std::string const &s)
 {
@@ -61,8 +62,8 @@ int main(int argc, char **argv)
 
     WebClient::initialize();
     TwitterClient tc(c_key, c_sec, t_key, t_sec);
-    cv::Mat src = cv::imread("../../syncer.jpg");
-    // std::string filename("../../syncer.jpg");
+    std::string filename("../../skeleton.png");
+    cv::Mat src = cv::imread(filename);
 
     return ( tc.tweet(message, src) ) ? 0 : 1;
     // return ( tc.tweet( message, cv::Mat() ) ) ? 0 : 1;
