@@ -2,10 +2,10 @@
 #include <oauth.h>
 #include <opencv2/opencv.hpp>
 
-#include "tweet.h"
-#include "webclient.h"
+#include "../../include/tweet.h"
+#include "../../include/webclient.h"
 // #include "mykey.h"
-#include "KazuSoap_key.h"
+#include "../../include/KazuSoap_key.h"
 
 static void str_append(std::string *to, std::string const &s)
 {

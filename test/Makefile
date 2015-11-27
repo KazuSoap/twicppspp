@@ -41,6 +41,9 @@ debug: all
 all: $(TARGET)
 $(TARGET): $(OBJS)
 	@mkdir -p $(PROGRAM_DIR)
+	@if [ ! -f ./libtwicpps++.a ]; then \
+		cp -p ../$(LIB_OUT_DIR)/libtwicpps++.a ./; \
+	fi
 	$(CXX) $(STATICFLAG) $^ $(LDFLAGS) -o $(PROGRAM_DIR)/$@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
