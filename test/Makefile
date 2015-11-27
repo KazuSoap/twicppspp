@@ -3,14 +3,14 @@
 # ------------------------------------
 
 # target
-TARGET = $(shell basename `pwd`)
+TARGET = $(shell basename `pwd | xargs dirname`)
 
 # directory
 OUT_DIR = build
 SRC_DIR = src
 HEADER_DIR = include
 PROGRAM_DIR = $(OUT_DIR)/bin
-LIB_OUT_DIR = $(OUT_DIR)/lib
+EX_LIB_DIR = ../$(OUT_DIR)/lib
 OBJ_DIR = $(OUT_DIR)/obj
 
 # input files
@@ -30,7 +30,7 @@ LDFLAGS  = `pkg-config --libs libssl` `pkg-config --libs oauth` -liconv
 release: CXX += -O2
 # release: STATICFLAG = -static
 release: CXXFLAGS = -I./$(HEADER_DIR) `pkg-config --cflags opencv_static`
-release: LDFLAGS  = -L./ -ltwicpps++ `pkg-config --libs opencv_static` `pkg-config --libs libssl` `pkg-config --libs oauth` `pkg-config --libs jsoncpp` -liconv
+release: LDFLAGS  = -L$(EX_LIB_DIR) -l$(TARGET) `pkg-config --libs opencv_static` `pkg-config --libs libssl` `pkg-config --libs oauth` `pkg-config --libs jsoncpp` -liconv
 release: all
 
 # debug
@@ -41,9 +41,6 @@ debug: all
 all: $(TARGET)
 $(TARGET): $(OBJS)
 	@mkdir -p $(PROGRAM_DIR)
-	@if [ ! -f ./libtwicpps++.a ]; then \
-		cp -p ../$(LIB_OUT_DIR)/libtwicpps++.a ./; \
-	fi
 	$(CXX) $(STATICFLAG) $^ $(LDFLAGS) -o $(PROGRAM_DIR)/$@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
