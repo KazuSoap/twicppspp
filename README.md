@@ -1,6 +1,6 @@
 # twicpps++
 このライブラリは twicpps (http://www.soramimi.jp/twicpps/) のフォークです。
-  http://www.soramimi.jp/profile.html の利用条件( 以下参照 )を守る必要があります。
+ http://www.soramimi.jp/profile.html の利用条件( 以下参照 )を守る必要があります。
 * 修正 BSD ライセンス
 * ソースコードの配布には著作権表示が必要
 * コンパイル済み実行形式の配布には宣伝条項を要求しない
