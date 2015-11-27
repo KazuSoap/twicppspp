@@ -10,6 +10,7 @@ OUT_DIR = build
 SRC_DIR = src
 HEADER_DIR = include
 PROGRAM_DIR = $(OUT_DIR)/bin
+LIB_OUT_DIR = $(OUT_DIR)/lib
 OBJ_DIR = $(OUT_DIR)/obj
 
 # input files
@@ -39,8 +40,10 @@ debug: all
 # all
 all: $(TARGET)
 $(TARGET): $(OBJS)
-	@mkdir -p $(PROGRAM_DIR)
-	$(CXX) $(STATICFLAG) $^ $(LDFLAGS) -o $(PROGRAM_DIR)/$@
+	@mkdir -p $(LIB_OUT_DIR)
+#	@mkdir -p $(PROGRAM_DIR)
+	ar r $(LIB_OUT_DIR)/lib$@.a $^
+#	$(CXX) $(STATICFLAG) $^ $(LDFLAGS) -o $(PROGRAM_DIR)/$@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)

@@ -1,9 +1,6 @@
-/*/
-!include/
-!src/
-!*.c*
-!*.h*
+build/
 include/KazuSoap_key.h
+test/libtwicpps++.a
 .clang_complete
 GPATH
 GRTAGS
