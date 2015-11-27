@@ -3,6 +3,7 @@
 #include <winsock2.h>
 #include <windows.h>
 typedef SOCKET socket_t;
+#pragma warning(disable:4996)
 #else
 #include <unistd.h>
 #include <sys/types.h>
@@ -29,7 +30,6 @@ typedef int socket_t;
 #include <openssl/rand.h>
 
 #include "webclient.h"
-#pragma warning(disable:4996)
 
 #define USER_AGENT "Generic Web Client"
 
